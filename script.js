@@ -1,14 +1,15 @@
-//Cotação de moedas do dia.
+// Cotação de moedas do dia.
 const USD = 4.93;
 const EUR = 5.77;
 const GBP = 6.67;
 
-//obtendo os elementos do formulário.
-const form=document .querySelector('form');
-const amount=document .getElementById('amount');
-const currency=document .getElementById('currency');
+// Obtendo os elementos do formulário.
+const form = document .querySelector('form');
+const amount = document .getElementById('amount');
+const currency = document .getElementById('currency');
+const footer = document .querySelector('main footer');
 
-//Manipulando o input amount para receber somente números.
+// Manipulando o input amount para receber somente números.
 amount.addEventListener("input",() => {
 
 const hasCharactersRegex = /\D+/g
@@ -16,7 +17,8 @@ amount.value = amount.value.replace(hasCharactersRegex, '')
 
 })
 
-//Capturando o evento de submit(enviar) do formulário.
+// Capturando o evento de submit(enviar) do formulário.
+
 form.onsubmit = function (event) {
   event.preventDefault();
 
@@ -33,7 +35,17 @@ form.onsubmit = function (event) {
   }
 }
 
-//Função para converter a moeda.
-function convertCurrency(amount, price, symbol) {
+// Função para converter a moeda.
 
+function convertCurrency(amount, price, symbol) {
+  try {
+    // Aplica a classe que exibe o footer para mostrar o resultado.
+    footer.classList.add('show-result')
+  } catch (error) {
+    // Remove a classe a classe do footer para ocultar o resultado.
+    footer.classList.remove('show-result')
+    
+    console.log(error)
+    alert("Não foi possível converter. Tente novamente mais tarde.")
+  }
 }
