@@ -39,6 +39,9 @@ form.onsubmit = function (event) {
 
 function convertCurrency(amount, price, symbol) {
   try {
+    description.textContent = `${symbol} 1 = ${price}`
+
+
     // Aplica a classe que exibe o footer para mostrar o resultado.
     footer.classList.add('show-result')
   } catch (error) {
